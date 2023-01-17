@@ -1,0 +1,46 @@
+ion-content{
+    --ion-background-color: #2D6650;
+}
+ion-item{
+   border-radius: 50px;
+   height: 55px;
+
+ }
+//  ion-input{
+//     font-size: 18px;
+//     --padding-top: 20px;
+//     --padding-bottom: 15px;
+//     --padding-start: 5px;
+//  }
+ a{
+    font-size: 17px;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+ }
+ #form{
+    margin-top: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+ }
+ button,
+ ion-input{
+    font-size: 12px;
+    border-radius: 15px;
+    height: 35px;
+    width: 200px;
+    background-color: white;
+}
+ button{
+    background-color: #FBC201;
+    color: white;
+    border: none;
+ }
+
+ ion-icon{
+    width: 20px;
+    height: 20px;
+
+ }
+ .p{
+    font-size: 12px;
+ }
