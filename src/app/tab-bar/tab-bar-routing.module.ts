@@ -6,8 +6,23 @@ import { TabBarPage } from './tab-bar.page';
 const routes: Routes = [
   {
     path: '',
-    component: TabBarPage
-  }
+    component: TabBarPage,
+  //   children:[
+  //     {
+  //       path: 'accueil',
+  //       loadChildren: () => import('../accueil/accueil.module').then( m => m.AccueilPageModule)
+  //     },
+  //     {
+  //       path: 'profil',
+  //       loadChildren: () => import('../profil/profil.module').then( m => m.ProfilPageModule)
+  //     },
+  //     {
+  //       path: '',
+  //       redirectTo: './accueil.page',
+  //       pathMatch: 'full'
+  //     }
+  //   ]
+   }
 ];
 
 @NgModule({

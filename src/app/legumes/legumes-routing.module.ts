@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: LegumesPage
-  }
+  },
+  // {
+  //   path: 'accueil',
+  //   loadChildren: () => import('../accueil/accueil.module').then( m => m.AccueilPageModule)
+  // },
 ];
 
 @NgModule({

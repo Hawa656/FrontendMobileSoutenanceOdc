@@ -23,22 +23,31 @@
   </ion-tabs> -->
 
   <ion-tabs>
-    <ion-tab-bar slot="bottom" color="danger">
+    <ion-tab-bar slot="bottom" style="--background: #25503F;">
       <!-- tab="" permet de donner le chemin de la page -->
 
       <!-- <ion-menu-toggle id="left">
         <ion-icon name="menu"></ion-icon>
        
       </ion-menu-toggle> -->
-      <ion-menu-toggle id="left" >
+      <!-- <ion-tab-button id="left">
         <ion-icon name="menu"></ion-icon> 
         <ion-label>Menu</ion-label>
+      </ion-tab-button> -->
+      <ion-menu-toggle id="left" >
+        <ion-tab-button>
+
+          <ion-icon class="menu " name="menu" ></ion-icon> 
+          <ion-label class="textMenu ">Menu</ion-label>
+        </ion-tab-button>
       </ion-menu-toggle>
-      <ion-tab-button>
+      
+
+      <ion-tab-button tab="accueil">
         <ion-icon name="home"></ion-icon>
         <ion-label>Accueil</ion-label>
       </ion-tab-button>
-      <ion-tab-button>
+      <ion-tab-button tab="profil">
         <ion-icon name="person"></ion-icon>
         <ion-label>Profil</ion-label>
       </ion-tab-button>

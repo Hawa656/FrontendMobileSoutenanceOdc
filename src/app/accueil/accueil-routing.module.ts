@@ -6,8 +6,17 @@ import { AccueilPage } from './accueil.page';
 const routes: Routes = [
   {
     path: '',
-    component: AccueilPage
-  }
+    component: AccueilPage,
+    
+  },
+  {
+    path: 'fruits',
+    loadChildren: () => import('../fruits/fruits.module').then( m => m.FruitsPageModule)
+  },
+  // {
+  //   path: 'legumes',
+  //   loadChildren: () => import('../legumes/legumes.module').then( m => m.LegumesPageModule)
+  // },
 ];
 
 @NgModule({

@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header >
   <ion-toolbar>
     <ion-title></ion-title>
     <ion-buttons slot="start">
@@ -8,27 +8,40 @@
 </ion-header>
 
 <ion-content>
+ <div class="container mt-2">
   <div class="img mb-3 containerImg">
-    <h1 class="">Legumes</h1>
+    <h1 class="mt-4">Legumes</h1>
   </div>
+ </div>
   
   <div class="filtreSearchBar row ">
     <div class="col-3">
       <div class="filtre ">
-        <ion-icon class="icon1 " name="filter-outline"></ion-icon>
-        <ion-icon class="icon2" name="chevron-down-outline"></ion-icon>
+        <ion-icon class="icon1 " name="filter-outline" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></ion-icon>
+        <!-- <ion-icon class="icon2" name="chevron-down-outline"></ion-icon> -->
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+
+
+       
+
       </div>
     </div>
     <div class="col-9 searchbar">
       <ion-searchbar></ion-searchbar>
     </div>
   </div>
+
+
   <!-- ===============scrollBar==================== -->
 
-  <div class="scrollBar">
+  <div class="card">
     <!-- ===============CARD==================== -->
 
-  <ion-row class="mt-2">
+  <ion-row class="mt-2" >
     <ion-col size="6" class="">
       <ion-card>
         <img src="../../assets/Soutenance/carotte.jpg" alt="image de fruit" class="img2">
@@ -93,5 +106,6 @@
       </ion-card>
     </ion-col >
   </ion-row>
-  </div>
+  
+</div> 
 </ion-content>

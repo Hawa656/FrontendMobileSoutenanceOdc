@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title color="light" class="text-center">Papayer</ion-title>
+     
+    <ion-button class="button">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-button>
+    
+   
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="container containerImg ">
+    <div class=" row text">
+      <img class="imFruit mt-2" src="../../assets/Soutenance/papayer.png ">
+    </div>
+  </div>
+  
+  <div class="">
+    <!-- =====================ION-SEGMENT ===================== -->
+    <div class="container">
+    <ion-segment mode="md" scrollable="true" value="Description" (ionChange)="segmentChanged($event)">
+
+      <ion-segment-button value="Description">
+        <ion-label class="label">Description  </ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button value="Tutoriel">
+        <ion-label class="label">Tutoriel</ion-label>
+      </ion-segment-button>
+
+  </ion-segment>
+</div>
+<!-- =====================Contenu Description ===================== -->
+  <div *ngIf="valueSelected == 'Description'">
+    <div class="container-fluid contenu mt-2">
+      
+      <div class="row mt-4 px-2">
+        <h2 class="mt-4 text-white" >Description</h2>
+        <div class="col-6 ">
+         <div class="rectangle1">
+          <h5 class="text-center">Récolte</h5>
+          <p class="text-center">3 à 5 mois</p>
+         </div>
+        </div>
+        
+        <div class="col-6 ">
+          <div class="rectangle1 ">
+           <h6 class="text-center">Récolte</h6>
+           <p class="text-center">3 à 5 mois</p>
+          </div>
+         </div>
+         <p class="text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat mollitia ad voluptate aspernatur atque, eius excepturi id commodi culpa repellat expedita minima sed amet consequatur omnis voluptatibus corporis rerum magnam?</p>
+      </div>
+    </div>
+   
+  </div>
+<!-- =====================Contenu Tutoriel ===================== -->
+  <div *ngIf="valueSelected == 'Tutoriel'">
+   <div  class="container-fluid  mt-2">
+      <div class="row mt-4 px-2">
+        
+        <h3 class="title fw-bolder">Culture de la papaye</h3>
+        <p class="textP">
+          La papaye (Carica papaya) est un fruit exotique qui pousse sur une grande vivace arborescente dont la tige unique ressemble à un tronc et peut atteindre au moins 6 m de haut. A l'extrémité, une touffe de feuilles de 50 à 70 cm de long sont divisées en lobes profonds et sont portées par un long pétiole.
+        </p>
+        <div class="fw-bolder list">
+          <ul>
+            <li>Semis : oui</li>
+            <li>Bouture : non</li>
+            <li>Plantation : printemps</li>
+            <li>Floraison : été</li>
+            <li>Hauteur : 3 à 8 m</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="container ">
+        <div class="row">
+         <video  controls src="../../assets/Soutenance/video2.mp4" class="video"></video>
+         <h4 class="textImg mx-3">Culture du grenadier</h4>
+        </div>
+       </div>
+   </div>
+   
+  </div>
+  </div>
+
+</ion-content>

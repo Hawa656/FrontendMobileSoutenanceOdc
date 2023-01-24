@@ -5,15 +5,19 @@
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url(../../assets/Soutenance/conseil.jpg);
     background-size: cover;
 }
+.text{
+    // position: relative;
+    // display: block;
+    // justify-content: center;
+    padding-top: 25px;
+}
 .title,
-
-
 .princ{
     width: 95%;
     margin: 10px auto;
 }
 .textLeft{
-    padding: 0px;
+    padding: 0px;   
 }
 .p{
     color: white;
