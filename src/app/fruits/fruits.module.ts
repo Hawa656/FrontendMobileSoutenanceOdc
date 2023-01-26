@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { FruitsPageRoutingModule } from './fruits-routing.module';
 
 import { FruitsPage } from './fruits.page';
-import { FruitsService } from '../../providers/fruits-service';
+// import { FruitsService } from '../../providers/fruits-service';
 
 @NgModule({
   imports: [
@@ -17,7 +17,7 @@ import { FruitsService } from '../../providers/fruits-service';
     FruitsPageRoutingModule,
   ],
   providers: [
-    FruitsService
+    // FruitsService
   ],
   declarations: [FruitsPage]
 })

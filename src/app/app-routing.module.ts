@@ -4,15 +4,16 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./details-conseil/details-conseil.module').then( m => m.DetailsConseilPageModule)
+    loadChildren: () => import('./connexion1/connexion1.module').then( m => m.Connexion1PageModule)
+    //loadChildren: () => import('./details-conseil/details-conseil.module').then( m => m.DetailsConseilPageModule)
     //loadChildren: () => import('./alerte2/alerte2.module').then( m => m.Alerte2PageModule)
   //loadChildren: () => import('./alerte1/alerte1.module').then( m => m.Alerte1PageModule)
     //loadChildren: () => import('./legume-fruit/legume-fruit.module').then( m => m.LegumeFruitPageModule)
     //loadChildren: () => import('./conseils/conseils.module').then( m => m.ConseilsPageModule)
-    //loadChildren: () => import('./videos/videos.module').then( m => m.VideosPageModule)
+    // loadChildren: () => import('./videos/videos.module').then( m => m.VideosPageModule)
     //loadChildren: () => import('./legumes/legumes.module').then( m => m.LegumesPageModule)
     //loadChildren: () => import('./fruits/fruits.module').then( m => m.FruitsPageModule)
-    //loadChildren: () => import('./accueil/accueil.module').then( m => m.AccueilPageModule)
+    // loadChildren: () => import('./accueil/accueil.module').then( m => m.AccueilPageModule)
     //loadChildren: () => import('./tab-bar/tab-bar.module').then( m => m.TabBarPageModule)
     //loadChildren: () => import('./connexion/connexion.module').then( m => m.ConnexionPageModule)
      //loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
@@ -24,7 +25,7 @@ const routes: Routes = [
   // },
   {
     path: '',
-    redirectTo: 'connexion',
+    redirectTo: 'page1',
     pathMatch: 'full'
   },
   {
@@ -66,6 +67,10 @@ const routes: Routes = [
   {
     path: 'verification-otp',
     loadChildren: () => import('./verification-otp/verification-otp.module').then( m => m.VerificationOTPPageModule)
+  },
+  {
+    path: 'connexion1',
+    loadChildren: () => import('./connexion1/connexion1.module').then( m => m.Connexion1PageModule)
   },
   // {
   //   path: 'fruits',

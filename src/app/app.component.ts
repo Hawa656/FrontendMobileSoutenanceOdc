@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -7,5 +8,14 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  // registerForm!:FormGroup
+  // title!: 'formValidation';
+  // submitted =  false;
+  constructor(private formBuilder:FormBuilder) {}
+  // ngOnInit(){
+  //   //VALIDATIONS
+  //   this.registerForm  = this.formBuilder.group({
+  //     firstName:['',Validators.required]
+  //   })
+  // }
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FruitsService } from '../../providers/fruits-service';
 import { NavController, NavParams } from '@ionic/angular';
 
 @Component({
@@ -10,15 +9,10 @@ import { NavController, NavParams } from '@ionic/angular';
 export class FruitsPage implements OnInit {
   private fruits: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-    public fruitsService: FruitsService) { }
+  constructor() { }
 
     
-    ionViewDidLoad() {
-      this.fruitsService.getFruits().subscribe(fruits => {
-        this.fruits = fruits;
-      })
-    }
+    
 
   ngOnInit() {
   }
