@@ -1,103 +1,220 @@
 <ion-content class="content">
   <h1 class="h1 pt-5 pb-2">Se connecter</h1>
-  
+
   <div class="container">
     <div class="photo">
-    <ion-img width="10" height="10" src="../../assets/Soutenance/legumefruit.png "></ion-img>
-  </div>
+      <ion-img width="10" height="10" src="../../assets/Soutenance/legumefruit.png "></ion-img>
+    </div>
   </div>
 
   <div class="container">
-    
-      <form  action="">
-        <div class="mb-3">
-          <!-- <label for="exampleInputEmail1" class="form-label">Email address</label> -->
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrer votre email ou numéro">
-          
-        </div>
-        <div class="mb-3">
-          <!-- <label for="exampleInputPassword1" class="form-label">Password</label> -->
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Entrer votre mot de passe">
-        </div>
-        
-        <button type="submit" class="btn btn-primary">Se connecter</button>
-  </form>
 
-  <a href="#"><p class="text-center   mt-3 link1">Mot de passe oublié ?</p></a>
-   <!-- =====================ICON========================= -->
-   <div  class="ion-text-center pb-2" >
-    <a href="">
-      <ion-icon slot="start" class="mx-1" name="logo-facebook"></ion-icon>
-    </a> 
-    <a href="">
-      <ion-icon slot="start" class="mx-1" name="logo-google" color="danger"></ion-icon>
+    <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && Connexion()" #f="ngForm" novalidate>
+      <div class="mb-3">
+        <!-- <label for="exampleInputEmail1" class="form-label">Email address</label> -->
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+          placeholder="Entrer votre email ou numéro"
+          type="text"
+          class="form-control"
+          name="numeroOrEmail"
+          [(ngModel)]="form.numeroOrEmail"
+          required
+          #numeroOrEmail="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && numeroOrEmail.errors }">
+          <div *ngIf="numeroOrEmail.errors && f.submitted" class="invalid-feedback">
+            numeroOrEmail is required!
+          </div>
+
+      </div>
+      <div class="mb-3">
+        <!-- <label for="exampleInputPassword1" class="form-label">Password</label> -->
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Entrer votre mot de passe"
+        type="password"
+          class="form-control"
+          name="password"
+          [(ngModel)]="form.password"
+          required
+          minlength="6"
+          #password="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && password.errors }"
+        >
+        <div *ngIf="password.errors && f.submitted" class="invalid-feedback">
+          <div *ngIf="password.errors['required']">Password is required</div>
+          <div *ngIf="password.errors['minlength']">
+            Password must be at least 6 characters
+          </div>
+        </div>
+      </div>
+
+      <button type="submit">Se connecter</button>
+      <div class="form-group">
+        <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger" role="alert">
+          Login failed: {{ errorMessage }}
+        </div>
+      </div>
+
+    </form>
+    <div class="alert alert-success" *ngIf="isLoggedIn">
+      Logged in as {{ roles }}.
+      <button (click)="logout()"></button>
+    </div>
+
+    <a href="#">
+      <p class="text-center   mt-3 link1">Mot de passe oublié ?</p>
     </a>
-    <a href="">
-      <ion-icon slot="start" name="logo-github" color="dark"></ion-icon>
-    </a>
-   </div>
+    <!-- =====================ICON========================= -->
+    <div class="ion-text-center pt-3">
+      <a href="">
+        <ion-icon slot="start" class="mx-1" name="logo-facebook"></ion-icon>
+      </a>
+      <a href="">
+        <ion-icon slot="start" class="mx-1" name="logo-google" color="danger"></ion-icon>
+      </a>
+      <a href="">
+        <ion-icon slot="start" name="logo-github" color="dark"></ion-icon>
+      </a>
+    </div>
   </div>
   <!-- ========================================================================
-    ======================================================
+    ===============================MODAL=======================
     =========================================================== -->
-  
-  <ion-content class="ion-padding">
-    <ion-button id="open-modal" expand="block">Créer un compte?</ion-button>
-  
-    <ion-modal #modal trigger="open-modal" >
+
+  <div class="ion-padding">
+    <ion-button id="open-modal" expand="block" class="link1">Créer un compte?</ion-button>
+
+    <ion-modal #modal trigger="open-modal">
       <ng-template>
-        <ion-content>
-          <ion-toolbar>
+        <ion-content class="tt">
+          <!-- <ion-toolbar>
             <ion-title class="text-center">Inscription</ion-title>
             <ion-buttons slot="end">
-              <ion-button color="light" (click)="modal.dismiss()"><ion-icon name="close-circle-outline" ></ion-icon></ion-button>
+              <ion-button color="light" (click)="modal.dismiss()"><ion-icon
+                  name="close-circle-outline"></ion-icon></ion-button>
             </ion-buttons>
-          </ion-toolbar>
-          
+          </ion-toolbar> -->
+
           <!--==============CONTENU DU MODAL=============== -->
-          
-          <form class="mt-3 mb-0"
-          
-          >
+          <ion-title class="text-center">Inscription</ion-title>
+          <form class="mt-3 mb-0" *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"
+            novalidate>
             <div class="mb-3">
-             
-              <input  type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrer votre nom ">
-            </div>
 
-            <div class="mb-3">
-              
-              <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Entrer votre prenom">
-            </div>
+              <input type="text" class="form-control" id="exampleInputNom" aria-describedby="emailHelp"
+                placeholder="Entrer votre nom " class="form-control" name="nom" [(ngModel)]="form.nom" required
+                minlength="3" maxlength="20" #nom="ngModel" [ngClass]="{ 'is-invalid': f.submitted && nom.errors }">
+              <div class="invalid-feedback" *ngIf="nom.errors && f.submitted">
+                <div *ngIf="nom.errors['required']">nom is required</div>
+                <div *ngIf="nom.errors['minlength']">
+                  nom must be at least 3 characters
+                </div>
+                <div *ngIf="nom.errors['maxlength']">
+                  nom must be at most 20 characters
+                </div>
+              </div>
 
-            <div class="mb-3">
-              
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Entrer votre mot de passe">
-            </div>
+              <div class="mb-3 mt-3">
 
-            <div class="mb-3">
-              
-              <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Entrer votre numéro">
-            </div>
+                <input type="text" class="form-control" id="exampleInputPrenom" placeholder="Entrer votre prenom"
+                  class="form-control" name="prenom" [(ngModel)]="form.prenom" required minlength="3" maxlength="20"
+                  #prenom="ngModel" [ngClass]="{ 'is-invalid': f.submitted && prenom.errors }">
+                <div class="invalid-feedback" *ngIf="prenom.errors && f.submitted">
+                  <div *ngIf="prenom.errors['required']">prenom is required</div>
+                  <div *ngIf="prenom.errors['minlength']">
+                    prenom must be at least 3 characters
+                  </div>
+                  <div *ngIf="prenom.errors['maxlength']">
+                    prenom must be at most 20 characters
+                  </div>
+                </div>
 
-            <div class="mb-3">
-              
-              <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Entrer votre email">
-            </div>
+                <div class="mb-3 mt-3">
 
-            <!-- <div class="mb-3"> -->
+                  <input type="password" class="form-control" id="exampleInputPassword1"
+                    placeholder="Entrer votre mot de passe" class="form-control" name="password"
+                    [(ngModel)]="form.password" required minlength="6" #password="ngModel"
+                    [ngClass]="{ 'is-invalid': f.submitted && password.errors }">
+                  <div class="invalid-feedback" *ngIf="password.errors && f.submitted">
+                    <div *ngIf="password.errors['required']">Password is required</div>
+                    <div *ngIf="password.errors['minlength']">
+                      Password must be at least 6 characters
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+
+                  <input type="password" class="form-control" id="exampleInputPasswordC"
+                    placeholder="Confirmer mot de passe" class="form-control" name="confirmpassword"
+                    [(ngModel)]="form.confirmpassword" required minlength="6" #confirmpassword="ngModel"
+                    [ngClass]="{ 'is-invalid': f.submitted && confirmpassword.errors }">
+                  <div class="invalid-feedback" *ngIf="password.errors && f.submitted">
+                    <div *ngIf="password.errors['required']">confirmpassword is required</div>
+                    <div *ngIf="password.errors['minlength']">
+                      confirmpassword must be at least 6 characters
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+
+                  <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Entrer votre numéro"
+                    class="form-control" name="numero" [(ngModel)]="form.numero" required minlength="8" maxlength="13"
+                    #numero="ngModel" [ngClass]="{ 'is-invalid': f.submitted && numero.errors }">
+                  <div class="invalid-feedback" *ngIf="numero.errors && f.submitted">
+                    <div *ngIf="numero.errors['required']">numero is required</div>
+                    <div *ngIf="numero.errors['minlength']">
+                      numero must be at least 8 characters
+                    </div>
+                    <div *ngIf="numero.errors['maxlength']">
+                      numero must be at most 13 characters
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="mb-3">
+
+                  <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Entrer votre email"
+                    type="email" class="form-control" name="email" [(ngModel)]="form.email" required email
+                    #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.errors }">
+                  <div class="invalid-feedback" *ngIf="email.errors && f.submitted">
+                    <div *ngIf="email.errors['required']">Email is required</div>
+                    <div *ngIf="email.errors['email']">
+                      Email must be a valid email address
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+
+              <!-- <div class="mb-3"> -->
               <!-- <label for="exampleInputPassword1" class="form-label">Password</label> -->
               <!-- <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Entrer votre mot de passe">
             </div> -->
-            
+            </div>
+
             <button type="submit" class="btn btn-primary">Envoyer</button>
-      </form>
-         <!-- </div> -->
-         
+
+            <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+              Signup failed!<br />{{ errorMessage }}
+            </div>
+
+          </form>
+          <div class="alert alert-success" *ngIf="isSuccessful">
+            Your registration is successful!
+          </div>
+          <!-- </div> -->
+
 
         </ion-content>
       </ng-template>
     </ion-modal>
-  </ion-content>
+  </div>
 
-  <a href=""><p class="text-center  text-light pt-0 ">Continuer sans compte?</p></a>
-</ion-content> -->
+  <ion-button class="link2" routerLink="/accueil">
+    <p class="text-center  text-light pt-0 ">Continuer sans compte?</p>
+  </ion-button>
+    
+  
+</ion-content>

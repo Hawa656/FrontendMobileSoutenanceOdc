@@ -15,7 +15,7 @@ import { ConnexionPage } from './connexion.page';
     IonicModule,
     ConnexionPageRoutingModule
   ],
-  declarations: [ConnexionPage]
+  declarations: []
 })
 export class ConnexionPageModule {
   
